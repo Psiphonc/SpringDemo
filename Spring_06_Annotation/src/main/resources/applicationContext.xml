@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--
+    配置完这个标签后，spring就会去自动扫描base-package对应的路径或者该路径的子包下面的java文件，
+    如果扫描到文件中带有@Service,@Component,@Repository,@Controller等这些注解的类，则把这些类注册为bean
+    -->
+    <context:component-scan base-package="top.psiphonc" />
+
+    <!--用于激活那些已经在spring容器里注册过的bean上面的注解，也就是显示的向Spring注册
+    AutowiredAnnotationBeanPostProcessor
+    CommonAnnotationBeanPostProcessor
+    PersistenceAnnotationBeanPostProcessor
+    RequiredAnnotationBeanPostProcessor
+    这四个Processor，注册这4个BeanPostProcessor的作用，就是为了你的系统能够识别相应的注解。-->
+    <!--https://blog.csdn.net/chenlong220192/article/details/46723561#:~:text=%E6%AD%A4%E6%A0%87%E7%AD%BE%E7%9A%84%E9%87%8D%E8%A6%81,%E8%AF%86%E5%88%AB%E7%9B%B8%E5%BA%94%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%8A%9F%E8%83%BD%EF%BC%81%EF%BC%81-->
+    <context:annotation-config/>
+
+</beans>

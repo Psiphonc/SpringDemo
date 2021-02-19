@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="top.psiphonc.dao.UserDaoMysqlImpl" id="daoMysql" />
+    <bean class="top.psiphonc.dao.UserDaoOracleImpl" id="daoOracle" />
+
+    <bean class="top.psiphonc.service.UserServiceImpl" id="userService">
+        <!--通过ref引入Spring容器中的实例-->
+        <!--value是具体的值-->
+        <property name="userDao" ref="daoMysql"/>
+    </bean>
+</beans>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       xmlns:p="http://www.springframework.org/schema/p"
+>
+    <bean id="address" class="top.psiphonc.pojo.Address">
+        <property name="address" value="idk"/>
+    </bean>
+    <bean id="student" class="top.psiphonc.pojo.Student">
+        <!--常量注入-->
+        <property name="name" value="Tom"/>
+        <!--bean注入-->
+        <property name="address" ref="address"/>
+        <!--Array注入-->
+        <property name="books">
+            <array>
+                <value>CSAPP</value>
+                <value>Java Core</value>
+                <value>Thinking in Java</value>
+            </array>
+        </property>
+        <!--List注入-->
+        <property name="hobbies">
+            <list>
+                <value>Music</value>
+                <value>Coding</value>
+            </list>
+        </property>
+        <!--map注入-->
+        <property name="card">
+            <map>
+                <entry key="idCard" value="18293749812379481723489"/>
+                <entry key="driverLicense" value="38417983247193"/>
+            </map>
+        </property>
+        <!--Set注入-->
+        <property name="games">
+            <set>
+                <value>GTA5</value>
+                <value>the Witcher</value>
+            </set>
+        </property>
+        <!--null注入-->
+        <property name="wife">
+            <null/>
+        </property>
+        <property name="info">
+            <props>
+                <prop key="fuck">you</prop>z
+                <prop key="damn">it</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

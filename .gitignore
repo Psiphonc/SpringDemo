@@ -1,0 +1,12 @@
+# Project exclude paths
+/HelloSpring/target/
+/Spring_01_IOCBase/target/
+/Spring_02_IOCAdvance/target/
+/Spring_03_DependencyInjection/target/
+/Spring_04_Autowire/target/
+/Spring_06_Annotation/target/
+/Spring_07_JavaConfig/target/
+/Spring_08_DynamicProxy/target/
+/Spring_09_AOP/target/
+/Spring_10_Mybatis/target/
+/Spring_11_Transaction/target/

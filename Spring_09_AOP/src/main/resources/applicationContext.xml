@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:app="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="userService" class="top.psiphonc.service.UserServiceImpl"/>
+    <bean id="log" class="top.psiphonc.log.Log"/>
+
+    <!--使用Spring API织入-->
+    <aop:config>
+        <!--切入点 -->
+        <aop:pointcut id="pointcut" expression="execution(* top.psiphonc.service.UserServiceImpl.*(..))"/>
+        <!--执行环绕增强-->
+        <aop:advisor advice-ref="log" pointcut-ref="pointcut"/>
+    </aop:config>
+
+    <!--使用自定义类织入-->
+    <bean id="myPointCut" class="top.psiphonc.diy.MyPointCut"/>
+    <app:config>
+        <!--自定义切面-->
+        <aop:aspect ref="myPointCut">
+            <!--切入点-->
+            <aop:pointcut id="pointCut" expression="execution(* top.psiphonc.service.UserServiceImpl.*(..))"/>
+            <!--通知-->
+            <aop:before method="before" pointcut-ref="pointCut"/>
+            <aop:after method="after" pointcut-ref="pointCut"/>
+        </aop:aspect>
+
+    </app:config>
+    <aop:aspectj-autoproxy/>
+    <bean id="annotationPointCut" class="top.psiphonc.diy.AnnotationPointCut"/>
+</beans>
